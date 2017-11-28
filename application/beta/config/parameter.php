@@ -1,10 +1,10 @@
 <?php $config=array (
   'config' => 
   array (
-    'title' => 'CodeIgniter-3.1.6（集成smarty模板、composer）',
+    'title' => 'CodeIgniter-3.1.6up（smarty&composer）',
     'subTitle' => '',
     'regKey' => '',
-    'configFile' => './application/config/parameter.php',
+    'configFile' => './application/beta/config/parameter.php',
     'url' => '',
     'logo' => '',
     'icp' => '',
