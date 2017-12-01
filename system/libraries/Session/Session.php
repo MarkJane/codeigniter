@@ -139,7 +139,6 @@ class CI_Session {
 		{
 			unset($_COOKIE[$this->_config['cookie_name']]);
 		}
-
 		session_start();
 
 		// Is session ID auto-regeneration configured? (ignoring ajax requests)
@@ -391,8 +390,12 @@ class CI_Session {
 				$this->_sid_regexp = '[0-9a-zA-Z,-]';
 				break;
 		}
-
-		$this->_sid_regexp .= '{'.$sid_length.'}';
+		
+		if(PHP_VERSION_ID >= 70000){
+			$this->_sid_regexp .= '{10,'.$sid_length.'}';
+		}else{
+			$this->_sid_regexp .= '{'.$sid_length.'}';
+		}
 	}
 
 	// ------------------------------------------------------------------------
