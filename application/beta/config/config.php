@@ -378,7 +378,7 @@ $config['encryption_key'] = '@';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = '@';
+$config['sess_cookie_name'] = 'session';
 $config['sess_expiration'] = 0;
 #文件驱动 files
 $config['sess_save_path'] =  FCPATH.'session/';
