@@ -61,6 +61,7 @@ class Ajax_Controller extends Controller {
         parent::__construct();
         if(!$this->input->is_ajax_request()){
             $this->message('Bad request!');
+			exit;
         }
     }
 } 
