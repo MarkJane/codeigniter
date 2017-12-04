@@ -28,6 +28,11 @@ class Controller extends CI_Controller {
         echo(json_encode(['message'=>$message,'status_code'=>200,'status'=>FALSE]));
     }
 
+    protected function notice($message='', $status_code='', $heading = 'An Error Was Encountered')
+    {
+        show_error($message, $status_code, $heading);
+    }
+
 } 
 
 class Smarty_Controller extends Controller {
@@ -61,8 +66,12 @@ class Ajax_Controller extends Controller {
         parent::__construct();
         if(!$this->input->is_ajax_request()){
             $this->message('Bad request!');
-			exit;
         }
+    }
+
+    public function __destruct()
+    {
+        ENVIRONMENT==='development'?:exit;
     }
 } 
 
