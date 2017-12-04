@@ -6,8 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'sfnt\\wechat\\sdk\\' => array($vendorDir . '/sfnt/wechat-php-sdk/src'),
+    'sfnt\\wechat\\qy\\sdk\\' => array($vendorDir . '/sfnt/wechat-php-sdk/src/qy'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
-    'dodgepudding\\wechat\\sdk\\' => array($vendorDir . '/dodgepudding/wechat-php-sdk'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Predis\\' => array($vendorDir . '/predis/predis/src'),

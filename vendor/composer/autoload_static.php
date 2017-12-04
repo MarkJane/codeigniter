@@ -10,16 +10,18 @@ class ComposerStaticInitd786f2be76ae25638db6c7029043685b
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
         '626dcc41390ebdaa619faa02d99943b0' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/common/customFunctions.php',
+        '1031b91e017487137a717f6d17f42584' => __DIR__ . '/..' . '/kairos/phpqrcode/qrlib.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'sfnt\\wechat\\sdk\\' => 16,
+            'sfnt\\wechat\\qy\\sdk\\' => 19,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
-        ),
-        'd' => 
-        array (
-            'dodgepudding\\wechat\\sdk\\' => 24,
         ),
         'W' => 
         array (
@@ -41,15 +43,19 @@ class ComposerStaticInitd786f2be76ae25638db6c7029043685b
     );
 
     public static $prefixDirsPsr4 = array (
+        'sfnt\\wechat\\sdk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sfnt/wechat-php-sdk/src',
+        ),
+        'sfnt\\wechat\\qy\\sdk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sfnt/wechat-php-sdk/src/qy',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-        ),
-        'dodgepudding\\wechat\\sdk\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dodgepudding/wechat-php-sdk',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -87,9 +93,9 @@ class ComposerStaticInitd786f2be76ae25638db6c7029043685b
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
-            'PHPQRCode' => 
+            'PHPExcel' => 
             array (
-                0 => __DIR__ . '/..' . '/aferrandini/phpqrcode/lib',
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
         ),
     );

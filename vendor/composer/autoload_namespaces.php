@@ -8,5 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'org\\bovigo\\vfs' => array($vendorDir . '/mikey179/vfsStream/src/main/php'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
-    'PHPQRCode' => array($vendorDir . '/aferrandini/phpqrcode/lib'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
 );

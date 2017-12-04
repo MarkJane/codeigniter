@@ -14,10 +14,11 @@
 		"php": ">=5.3.7",
 		"electrolinux/phpquery": "^0.9.6",
 		"predis/predis": "^1.1",
-		"dodgepudding/wechat-php-sdk": "^1.1",
 		"smarty/smarty": "^3.1",
-		"aferrandini/phpqrcode": "^1.0",
-		"khanamiryan/qrcode-detector-decoder": "^1.0"
+		"khanamiryan/qrcode-detector-decoder": "^1.0",
+		"sfnt/wechat-php-sdk": "^1.1",
+		"phpoffice/phpexcel": "^1.8",
+		"kairos/phpqrcode": "^1.0"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
