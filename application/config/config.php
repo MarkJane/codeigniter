@@ -234,7 +234,7 @@ $config['log_threshold'] = 1;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = FCPATH.'logs/';
+$config['log_path'] = FCPATH.'logs\\';
 
 /*
 |--------------------------------------------------------------------------
@@ -282,7 +282,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 | application/views/errors/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['error_views_path'] = FCPATH.'errors/';
+$config['error_views_path'] = FCPATH.'errors\\';
 
 /*
 |--------------------------------------------------------------------------
@@ -293,7 +293,7 @@ $config['error_views_path'] = FCPATH.'errors/';
 | application/cache/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = FCPATH.'cache/';
+$config['cache_path'] = FCPATH.'cache\\';
 
 /*
 |--------------------------------------------------------------------------
@@ -381,7 +381,7 @@ $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'session';
 $config['sess_expiration'] = 0;
 #文件驱动 files
-$config['sess_save_path'] =  FCPATH.'session/';
+$config['sess_save_path'] =  FCPATH.'session\\';
 #缓存驱动 redis
 #$config['sess_save_path'] = 'tcp://localhost:6379';
 #数据库驱动 database
@@ -408,7 +408,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
+$config['cookie_path']		= '\\';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
 

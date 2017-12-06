@@ -38,7 +38,7 @@
 /**
  * SYSTEM PATH
  */
-define('PATH', dirname(dirname(__FILE__)).'/');
+define('PATH', dirname(dirname(__FILE__)).'\\');
 
 /*
  *---------------------------------------------------------------
