@@ -118,7 +118,7 @@ $system_path = PATH.'system';
  *
  * NO TRAILING SLASH!
  */
-$application_folder = PATH.'application/beta';
+$application_folder = PATH.'application';
 
 /*
  *---------------------------------------------------------------
@@ -133,7 +133,7 @@ $application_folder = PATH.'application/beta';
  *
  * NO TRAILING SLASH!
  */
-$view_folder = PATH.'public/views';
+$view_folder = '';
 
 
 /*
