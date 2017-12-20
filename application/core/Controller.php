@@ -7,32 +7,6 @@ class Controller extends CI_Controller {
         ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
     }
 
-    public function __destruct()
-    {
-        ENVIRONMENT==='development'?:exit;
-    }
-
-	/**
-     * 接口返回总控
-     * @param  string  $message     [字符串信息]
-     * @param  integer $status_code [状态码 200正常 404无数据 500服务器异常 302暂时性转移 301永久重定向]
-     * @return [type]               [生产环境使用exit，调试环境使用echo。]
-     */
-    protected function message($message='',$status_code=500)
-    {
-        echo(json_encode(['message'=>$message,'status_code'=>$status_code,'status'=>TRUE]));
-    }
-    
-    protected function success($message='')
-    {
-        echo(json_encode(['message'=>$message,'status_code'=>200,'status'=>FALSE]));
-    }
-
-    protected function notice($message='', $status_code='', $heading = 'An Error Was Encountered')
-    {
-        show_error($message, $status_code, $heading);
-    }
-
 } 
 
 class Smarty_Controller extends Controller {
@@ -65,13 +39,9 @@ class Ajax_Controller extends Controller {
     public function __construct() {
         parent::__construct();
         if(!$this->input->is_ajax_request()){
-            $this->message('Bad request!');
+            return message('Bad request!');
         }
     }
 
-    public function __destruct()
-    {
-        ENVIRONMENT==='development'?:exit;
-    }
 } 
 
