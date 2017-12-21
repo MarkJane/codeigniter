@@ -31,8 +31,3 @@
 	{
 		die(json_encode(['msg'=>$message,'code'=>200,'status'=>FALSE]));
 	}
-
-	function notice($message='', $status_code='', $heading = 'An Error Was Encountered')
-	{
-		show_error($message, $status_code, $heading);
-	}
