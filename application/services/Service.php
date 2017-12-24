@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct access allowed.');
 
-class Service extends Base_Service
+class Service_Service extends Base_Service
 {
     public function __construct()
     {

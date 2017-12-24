@@ -72,6 +72,20 @@ class CI_Router {
 	public $class =		'';
 
 	/**
+	 * Current class file
+	 *
+	 * @var	string
+	 */
+	public $class_file =		'';
+
+	/**
+	 * Current class controller_suffix
+	 *
+	 * @var	string
+	 */
+	public $controller_suffix =		'';
+
+	/**
 	 * Current method name
 	 *
 	 * @var	string
@@ -210,7 +224,7 @@ class CI_Router {
 				$this->uri->rsegments = array(
 					1 => $this->class,
 					2 => $this->method
-				);
+					);
 			}
 			else
 			{
@@ -266,6 +280,7 @@ class CI_Router {
 		}
 
 		$this->set_class($segments[0]);
+		$this->set_class_file($segments[0]);
 		if (isset($segments[1]))
 		{
 			$this->set_method($segments[1]);
@@ -307,13 +322,14 @@ class CI_Router {
 		}
 
 		$this->set_class($class);
+		$this->set_class_file($class);
 		$this->set_method($method);
 
 		// Assign routed segments, index starting from 1
 		$this->uri->rsegments = array(
 			1 => $class,
 			2 => $method
-		);
+			);
 
 		log_message('debug', 'No URI present. Default controller set.');
 	}
@@ -339,12 +355,12 @@ class CI_Router {
 		while ($c-- > 0)
 		{
 			$test = $this->directory
-				.ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
+			.ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
 
 			if ( ! file_exists(APPPATH.'controllers/'.$test.'.php')
 				&& $directory_override === FALSE
 				&& is_dir(APPPATH.'controllers/'.$this->directory.$segments[0])
-			)
+				)
 			{
 				$this->set_directory(array_shift($segments), TRUE);
 				continue;
@@ -433,7 +449,21 @@ class CI_Router {
 	 */
 	public function set_class($class)
 	{
-		$this->class = str_replace(array('/', '.'), '', $class);
+		$this->class = str_replace(array('/', '.'), '', $class).$this->controller_suffix;
+	}
+	/**
+	 * Set class file
+	 *
+	 * @param	string	$class	Class name
+	 * @return	void
+	 */
+	public function set_class_file($class)
+	{
+		if (!empty($this->controller_suffix) && strstr($this->class, $this->controller_suffix)){
+			$this->class_file = str_replace($this->controller_suffix, '', $this->class);
+		}else{
+			$this->class_file = $this->class;
+		}
 	}
 
 	// --------------------------------------------------------------------

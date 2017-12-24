@@ -71,13 +71,26 @@ class CI_Loader {
 	 * @var	array
 	 */
 	protected $_ci_library_paths =	array(APPPATH, BASEPATH);
-
 	/**
 	 * List of paths to load models from
 	 *
 	 * @var	array
 	 */
 	protected $_ci_model_paths =	array(APPPATH);
+
+	/**
+	 * List of paths to load services from
+	 *
+	 * @var	array
+	 */
+	protected $_ci_services_paths = array(APPPATH);
+	
+	/**
+	 * List of loaded services
+	 *
+	 * @var	array
+	 */
+	protected $_ci_services = array();
 
 	/**
 	 * List of paths to load helpers from
@@ -122,7 +135,13 @@ class CI_Loader {
 	protected $_ci_varmap =	array(
 		'unit_test' => 'unit',
 		'user_agent' => 'agent'
-	);
+		);
+	/**
+	 * service & model class suffix
+	 * @var string
+	 */
+	protected $service_suffix = '';
+    protected $model_suffix = '';
 
 	// --------------------------------------------------------------------
 
@@ -331,26 +350,27 @@ class CI_Loader {
 				}
 
 				require_once($mod_path.'models/'.$path.$model.'.php');
-				if ( ! class_exists($model, FALSE))
+				$model_class=$model.$this->model_suffix;
+				if ( ! class_exists($model_class, FALSE))
 				{
-					throw new RuntimeException($mod_path."models/".$path.$model.".php exists, but doesn't declare class ".$model);
+					throw new RuntimeException($mod_path."models/".$path.$model.".php exists, but doesn't declare class ".$model_class);
 				}
 
 				break;
 			}
 
-			if ( ! class_exists($model, FALSE))
+			if ( ! class_exists($model_class, FALSE))
 			{
-				throw new RuntimeException('Unable to locate the model you have specified: '.$model);
+				throw new RuntimeException('Unable to locate the model you have specified: '.$model_class);
 			}
 		}
-		elseif ( ! is_subclass_of($model, 'CI_Model'))
+		elseif ( ! is_subclass_of($model_class, 'CI_Model'))
 		{
-			throw new RuntimeException("Class ".$model." already exists and doesn't extend CI_Model");
+			throw new RuntimeException("Class ".$model_class." already exists and doesn't extend CI_Model");
 		}
 
 		$this->_ci_models[] = $name;
-		$CI->$name = new $model();
+		$CI->$name = new $model_class();
 		return $this;
 	}
 
@@ -489,6 +509,129 @@ class CI_Loader {
 		return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 	}
 
+	/**
+	  * Service Loader
+	  *
+	  * This function lets users load and instantiate classes.
+	  * It is designed to be called from a user's app controllers.
+	  *
+	  * @param    string  the name of the class
+	  * @param    mixed   the optional parameters
+	  * @param    string  an optional object name
+	  * @return   object
+	  */
+	public function service($service = '', $params = NULL, $object_name = NULL)
+	{
+		if (empty($service))
+		{
+			return $this;
+		}
+		else if(is_array($service))
+		{
+      	//Is the service is an array?If so,load every key
+			foreach ($service as $key => $value)
+			{
+				is_int($key) ? $this->service($value, '', $object_name) : $this->service($key, $value, $object_name);
+			}
+			return $this;
+		}
+
+		$path = '';
+      	// Is the service in a sub-folder? If so, parse out the filename and path.
+		if (($last_slash = strrpos($service, '/')) !== FALSE)
+		{
+      	// The path is in front of the last slash
+			$path = substr($service, 0, ++$last_slash);
+      	// And the service name behind it
+			$service = substr($service, $last_slash);
+		}
+
+		if (empty($object_name))
+		{
+			$object_name = $service;
+		}
+
+		$object_name = strtolower($object_name);
+		if (in_array($object_name, $this->_ci_services, TRUE))
+		{
+			return $this;
+		}
+
+		$CI =& get_instance();
+		if (isset($CI->$object_name))
+		{
+			throw new RuntimeException('The service name you are loading is the name of a resource that is already being used: '.$object_name);
+		}
+
+      	// Note: All of the code under this condition used to be just:
+		//
+		//       load_class('Service', 'core');
+		//
+		//       However, load_class() instantiates classes
+		//       to cache them for later use and that prevents
+		//       MY_Model from being an abstract class and is
+		//       sub-optimal otherwise anyway.
+		if ( ! class_exists('CI_Service', FALSE))
+		{
+			$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
+			if (file_exists($app_path.'Service.php'))
+			{
+				require_once($app_path.'Service.php');
+				if ( ! class_exists('CI_Service', FALSE))
+				{
+					throw new RuntimeException($app_path."Service.php exists, but doesn't declare class CI_Service");
+				}
+			}
+			elseif ( ! class_exists('CI_Service', FALSE))
+			{
+				require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Service.php');
+			}
+
+			$class = config_item('subclass_prefix').'Service';
+			if (file_exists($app_path.$class.'.php'))
+			{
+				require_once($app_path.$class.'.php');
+				if ( ! class_exists($class, FALSE))
+				{
+					throw new RuntimeException($app_path.$class.".php exists, but doesn't declare class ".$class);
+				}
+			}
+		}
+
+		$service = ucfirst($service);
+		if (!class_exists($service, FALSE))
+		{   
+      		//load service files
+			foreach ($this->_ci_services_paths as $service_path)
+			{
+				if ( ! file_exists($service_path.'services/'.$path.$service.'.php'))
+				{
+					continue;
+				}
+        		//default path application/services/
+				include_once($service_path.'services/'.$path.$service.'.php');
+				$CI = &get_instance();
+				$service_class=$service.$this->service_suffix;
+
+				if($params !== NULL)
+				{
+					$CI->$object_name = new $service_class($params);
+				}
+				else
+				{	
+					$CI->$object_name = new $service_class();
+				}
+				$this->_ci_services[] = $object_name;
+				if (!class_exists($service_class, FALSE))
+				{
+					throw new RuntimeException($service_path."services/".$path.$service.".php exists, but doesn't declare class ".$service_class);
+				}
+				break;
+			}
+		}
+		return $this;
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -520,8 +663,8 @@ class CI_Loader {
 	public function vars($vars, $val = '')
 	{
 		$vars = is_string($vars)
-			? array($vars => $val)
-			: $this->_ci_prepare_view_vars($vars);
+		? array($vars => $val)
+		: $this->_ci_prepare_view_vars($vars);
 
 		foreach ($vars as $key => $val)
 		{
@@ -1275,8 +1418,8 @@ class CI_Loader {
 
 		// Instantiate the class
 		$CI->$object_name = isset($config)
-			? new $class_name($config)
-			: new $class_name();
+		? new $class_name($config)
+		: new $class_name();
 	}
 
 	// --------------------------------------------------------------------
@@ -1376,8 +1519,8 @@ class CI_Loader {
 		if ( ! is_array($vars))
 		{
 			$vars = is_object($vars)
-				? get_object_vars($vars)
-				: array();
+			? get_object_vars($vars)
+			: array();
 		}
 
 		foreach (array_keys($vars) as $key)

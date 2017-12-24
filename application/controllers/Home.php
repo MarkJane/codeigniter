@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends Smarty_Controller
+class Home_Controller extends Smarty_Controller
 {
 	public function __construct()
 	{

@@ -1,9 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct access allowed.');
 
-class Base_Loader extends CI_Loader {
+class Base_Router extends CI_Router {
 
-    public $service_suffix = '_Service';
-    public $model_suffix = '_Model';
+    public $controller_suffix = '_Controller';
 
     public function __construct(){
         parent::__construct();

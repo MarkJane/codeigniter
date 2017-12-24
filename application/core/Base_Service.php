@@ -1,12 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct access allowed.');
 
-class Base_Service
-{
+class Base_Service extends CI_Service{
 
-	function __get($key)
+	public function __construct()
     {
-        $CI = & get_instance();
-        return $CI->$key;
+        parent::__construct();
     }
 } 
 
