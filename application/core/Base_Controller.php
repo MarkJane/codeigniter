@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct access allowed.');
 
-class Controller extends CI_Controller {
+class Base_Controller extends CI_Controller {
 	
     public function __construct() {
         parent::__construct();
@@ -9,7 +9,7 @@ class Controller extends CI_Controller {
 
 } 
 
-class Smarty_Controller extends Controller {
+class Smarty_Controller extends Base_Controller {
 
     protected $smarty;
     public function __construct() {
@@ -34,7 +34,7 @@ class Smarty_Controller extends Controller {
 
 } 
 
-class Ajax_Controller extends Controller {
+class Ajax_Controller extends Base_Controller {
     
     public function __construct() {
         parent::__construct();
