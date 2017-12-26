@@ -52,7 +52,7 @@ public $model_suffix = '_Model';
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
 
-#### 6.新增了Smarty_Controller与Ajax_Controller两个控制器基类：
+#### 6.新增了Smarty_Controller与Ajax_Controller两个控制器类：
 
 	Base_Controller为基类，只不过比CI_Controller多了一个程序分析。
 
