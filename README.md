@@ -39,12 +39,12 @@ return success('hello,CodeIgniter-3.1.6up');
 #### 5.解决controller、service、model命名冲突:
 
 	你可以在core文件夹中配置你的类名后缀：
-	Base_Router.php中：
 ```php
+//Base_Router.php
 public $controller_suffix = '_Controller';
 ```
-	Base_Loader.php中：
 ```php
+//Base_Loader.php
 public $service_suffix = '_Service';
 public $model_suffix = '_Model';
 ```
