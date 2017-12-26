@@ -20,13 +20,12 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 #### 1.全面支持composer。
 
 ####  2.新增全局message与success方法：
-
+```php
 	return message('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
-
 	return success('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
-	
+```	
 	请在接口控制器里面调用它，非常有用！
 
 #### 3.新增file_url方法：
@@ -42,21 +41,15 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 #### 5.解决controller、service、model命名冲突:
 
 	你可以在core文件夹中配置你的类名后缀：
-
 	Base_Router.php中：
-
 ```php
     	public $controller_suffix = '_Controller';
 ```
-
 	Base_Loader.php中：
-
 ```php
     	public $service_suffix = '_Service';
-
     	public $model_suffix = '_Model';
 ```
-
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
 
@@ -70,11 +63,9 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 #### 7.默认调试环境打开了程序分析：
 
 	你可以在core文件夹下找到Base_Controller类中改变或者注释掉
-
 ```php
 	ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
 ```
-
 ## 服务器要求
 
 	PHP>=7.0
