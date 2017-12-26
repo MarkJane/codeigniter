@@ -32,7 +32,10 @@ return success('hello,CodeIgniter-3.1.6up');
 
 
 #### 4.新增service层:
-
+```php
+$this->load->service('service');
+$this->service->test();
+```	
 	现在你可以把你的业务逻辑丢进services文件夹了，避免产生臃肿的控制器。
 
 
@@ -49,7 +52,9 @@ public $model_suffix = '_Model';
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
 
-#### 6.新增了两个控制器基类：
+#### 6.新增了Smarty_Controller与Ajax_Controller两个控制器基类：
+
+	Base_Controller为基类，只不过比CI_Controller多了一个程序分析。
 
 	Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，请配置并在你的控制器里边继承它。
 
