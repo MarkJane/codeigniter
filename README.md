@@ -25,13 +25,13 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 ### 1.全面支持composer。
 
 ### 2.新增全局message与success方法：
-```
+
 	return message('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
 
 	return success('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
-```
+	
 	请在接口控制器里面调用它，非常有用！
 
 ### 3.新增file_url方法：
