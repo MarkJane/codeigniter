@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home_Controller extends Smarty_Controller
+class Home_Controller extends Base_Controller
 {
 	public function __construct()
 	{
@@ -8,7 +8,7 @@ class Home_Controller extends Smarty_Controller
 	}
 
 	function index(){
-		$this->smarty->display('index.html');
+		$this->load->view('index.html');
 	}
 
 }

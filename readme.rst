@@ -1,70 +1,106 @@
 ###################
-What is CodeIgniter
+CodeIgniter-3.1.6up 框架介绍
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP构建网站的人员。它的目标是使您能够比从头开始编写代码更快的速度开发项目，提供丰富的常用任务库以及访问这些库的简单界面和逻辑结构。CodeIgniter通过最小化给定任务所需的代码量，使您可以创造性地专注于您的项目。
 
 *******************
-Release Information
+发布信息
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+基于`CodeIgniter3.1.6<https://codeigniter.com>`_框架的一个优化版本。
 
 **************************
-Changelog and New Features
+更新日志和新功能
 **************************
+0.源框架修改记录：
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+	a.index.php已经搬到了public目录。
+	b.修正php7+版本中无法正确记录session。
+	c.文件夹cache、errors、logs、session、static、temp、uploads已经搬到public目录。
+
+
+1.全面支持composer。
+
+2.新增全局message与success方法：
+
+return message('hello,CodeIgniter-3.1.6up');	// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
+
+return success('hello,CodeIgniter-3.1.6up');	// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
+
+请在接口控制器里面调用它，非常有用！
+
+3.新增file_url方法：
+
+这个方法的作用是引入外部样式主题文件，跟site_url()、base_url()一样使用，你也可以在config.php中统一配置域名。
+
+
+4.新增service层:
+
+现在你可以把你的业务逻辑丢进services文件夹了，避免产生臃肿的控制器。
+
+
+5.解决controller、service、model命名冲突:
+
+你可以在core文件夹中配置你的类名后缀：
+
+Base_Router.php中：
+
+    public $controller_suffix = '_Controller';
+
+Base_Loader.php中：
+
+    public $service_suffix = '_Service';
+
+    public $model_suffix = '_Model';
+
+然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
+
+
+6.新增了两个控制器基类：
+
+Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，请配置并在你的控制器里边继承它。
+
+Ajax_Controller为ajax检测类，调用它可以判断是否为ajax请求，用于前后台数据交互接口。
+
+
+7.默认调试环境打开了程序分析：
+
+你可以在core文件夹下找到Base_Controller类中改变或者注释掉 ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
+
 
 *******************
-Server Requirements
+服务器要求
 *******************
 
-PHP version 5.6 or newer is recommended.
-
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+PHP>=7.0
 
 ************
-Installation
+安装
 ************
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+请参阅 CodeIgniter用户指南的 `安装部分<https://codeigniter.com/user_guide/installation/index.html>`_.
 
 *******
-License
+执照
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+请参阅 `许可协议<https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
 
 *********
-Resources
+资源
 *********
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+-  `用户指南<https://codeigniter.com/docs>`_
+-  `语言文件翻译<https://github.com/bcit-ci/codeigniter3-translations>`_
+-  `社区论坛<http://forum.codeigniter.com/>`_
+-  `社区维基<https://github.com/bcit-ci/CodeIgniter/wiki>`_
+-  `社区松弛频道<https://codeigniterchat.slack.com>`_
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+将安全问题报告给我们的`安全小组<mailto:security@codeigniter.com>`_ 或通过我们的`HackerOne页面<https://hackerone.com/codeigniter>`_，谢谢。
 
 ***************
-Acknowledgement
+结语
 ***************
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+CodeIgniter3.1.6up团队要感谢EllisLab，CodeIgniter项目的所有贡献者和CodeIgniter团队。

@@ -847,3 +847,43 @@ if ( ! function_exists('function_usable'))
 		return FALSE;
 	}
 }
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('message'))
+{
+	/**
+	 * Ellipsize String
+	 *
+	 * This function will return a normal json message
+	 *
+	 * @param	message	string to return
+	 * @param	status_code	error code
+	 * @return	string	json string
+	 */
+	function message($message='',$status_code=500)
+	{
+		echo json_encode(['msg'=>$message,'code'=>$status_code,'status'=>TRUE]);
+		ENVIRONMENT==='development'?:exit;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('success'))
+{
+	/**
+	 * Ellipsize String
+	 *
+	 * This function will return a normal json message
+	 *
+	 * @param	message	string body
+	 * @return	string	json string
+	 */
+	function success($message='',$status_code=200)
+	{
+		echo json_encode(['msg'=>$message,'code'=>$status_code,'status'=>FALSE]);
+		ENVIRONMENT==='development'?:exit;
+	}
+}
+

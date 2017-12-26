@@ -729,6 +729,7 @@ class CI_Loader {
 	public function helper($helpers = array())
 	{
 		is_array($helpers) OR $helpers = array($helpers);
+
 		foreach ($helpers as &$helper)
 		{
 			$filename = basename($helper);
@@ -780,7 +781,6 @@ class CI_Loader {
 					break;
 				}
 			}
-
 			// unable to load the helper
 			if ( ! isset($this->_ci_helpers[$helper]))
 			{

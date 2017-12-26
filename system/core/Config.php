@@ -100,7 +100,7 @@ class CI_Config {
 				}
 
 				$base_url = (is_https() ? 'https' : 'http').'://'.$server_addr
-					.substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
+				.substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
 			}
 			else
 			{
@@ -158,8 +158,8 @@ class CI_Config {
 				if ($use_sections === TRUE)
 				{
 					$this->config[$file] = isset($this->config[$file])
-						? array_merge($this->config[$file], $config)
-						: $config;
+					? array_merge($this->config[$file], $config)
+					: $config;
 				}
 				else
 				{
@@ -320,6 +320,33 @@ class CI_Config {
 		}
 
 		return $base_url.$this->_uri_string($uri);
+	}
+
+	// -------------------------------------------------------------
+
+	/**
+	 * File URL
+	 *
+	 * Returns base_url [. uri_string]
+	 *
+	 * @uses	CI_Config::_uri_string()
+	 *
+	 * @param	string|string[]	$uri	URI string or an array of segments
+	 * @param	string	$protocol
+	 * @return	string
+	 */
+	public function file_url($uri = '', $protocol = NULL)
+	{
+		$file_url = $this->slash_item('file_url');
+		
+		if(empty($file_url)){
+			$file_url = $this->slash_item('base_url');
+		}
+		if (isset($protocol))
+		{
+			$file_url = $protocol.substr($file_url, strpos($file_url, '://'));
+		}
+		return $file_url.ltrim($uri, '/');
 	}
 
 	// -------------------------------------------------------------

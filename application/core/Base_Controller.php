@@ -24,7 +24,6 @@ class Smarty_Controller extends Base_Controller {
         $this->smarty->force_compile = ENVIRONMENT==='development'?TRUE:FALSE;
         $this->smarty->caching        = ENVIRONMENT==='development'?FALSE:TRUE;
         $this->smarty->cache_lifetime = ENVIRONMENT==='development'?0:60;
-        $this->smarty->assign('config',config_item('config'));  
     }
 
     public function __destruct()
