@@ -64,11 +64,6 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 
 #### 7.默认调试环境打开了程序分析：
-<<<<<<< HEAD
-=======
-
-	你可以在core文件夹下找到Base_Controller类中改变或者注释掉 ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
->>>>>>> 765d85caac273243e7a757ee3a8ab64618af2b75
 
 	你可以在core文件夹下找到Base_Controller类中改变或者注释掉
 	
