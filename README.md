@@ -5,7 +5,7 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 ## 发布信息
 
-基于 [CodeIgniter3](https://codeigniter.com) 框架的一个优化版本。
+基于 [CodeIgniter3.1.6](https://codeigniter.com) 框架的一个优化版本。
 
 ## 更新日志和新功能
 
@@ -45,13 +45,17 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 	Base_Router.php中：
 
+```php
     	public $controller_suffix = '_Controller';
+```
 
 	Base_Loader.php中：
 
+```php
     	public $service_suffix = '_Service';
 
     	public $model_suffix = '_Model';
+```
 
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
@@ -66,8 +70,10 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 #### 7.默认调试环境打开了程序分析：
 
 	你可以在core文件夹下找到Base_Controller类中改变或者注释掉
-	
+
+```php
 	ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
+```
 
 ## 服务器要求
 
