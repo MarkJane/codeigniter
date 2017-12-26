@@ -8,12 +8,12 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 发布信息
 *******************
 
-基于 `CodeIgniter3.1.6 <https://codeigniter.com>`_框架的一个优化版本。
+基于 `CodeIgniter3 <https://codeigniter.com>`_ 框架的一个优化版本。
 
 **************************
 更新日志和新功能
 **************************
-*** 0.源框架修改记录：
+### 0.源框架修改记录：
 
 	a.index.php已经搬到了public目录。
 
@@ -25,13 +25,13 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 ### 1.全面支持composer。
 
 ### 2.新增全局message与success方法：
-
+```
 	return message('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
 
 	return success('hello,CodeIgniter-3.1.6up');
 	// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
-
+```
 	请在接口控制器里面调用它，非常有用！
 
 ### 3.新增file_url方法：
@@ -46,7 +46,7 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 ### 5.解决controller、service、model命名冲突:
 
-你可以在core文件夹中配置你的类名后缀：
+	你可以在core文件夹中配置你的类名后缀：
 
 	Base_Router.php中：
 
@@ -101,10 +101,10 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 -  `社区维基 <https://github.com/bcit-ci/CodeIgniter/wiki>`_
 -  `社区松弛频道 <https://codeigniterchat.slack.com>`_
 
-将安全问题报告给我们的 `安全小组 <mailto:security@codeigniter.com>`_ 或通过我们的 `HackerOne页面 <https://hackerone.com/codeigniter>`_，谢谢。
+	将安全问题报告给我们的 `安全小组 <mailto:security@codeigniter.com>`_ 或通过我们的 `HackerOne页面 <https://hackerone.com/codeigniter>`_，谢谢。
 
 ***************
 结语
 ***************
 
-CodeIgniter3.1.6up团队要感谢EllisLab，CodeIgniter项目的所有贡献者和CodeIgniter团队。
+	CodeIgniter3.1.6up团队要感谢EllisLab，CodeIgniter项目的所有贡献者和CodeIgniter团队。
