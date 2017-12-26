@@ -42,8 +42,6 @@ return success('hello,CodeIgniter-3.1.6up');
 ```php
 //Base_Router.php
 public $controller_suffix = '_Controller';
-```
-```php
 //Base_Loader.php
 public $service_suffix = '_Service';
 public $model_suffix = '_Model';
