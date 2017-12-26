@@ -13,8 +13,8 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 **************************
 更新日志和新功能
 **************************
-### 0.源框架修改记录：
 
+*0.源框架修改记录：*
 	a.index.php已经搬到了public目录。
 
 	b.修正php7+版本中无法正确记录session。
@@ -22,7 +22,7 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 	c.文件夹cache、errors、logs、session、static、temp、uploads已经搬到public目录。
 
 
-### 1.全面支持composer。
+*1.全面支持composer。*
 
 ### 2.新增全局message与success方法：
 
