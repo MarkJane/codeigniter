@@ -21,10 +21,10 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 ####  2.新增全局message与success方法：
 ```php
-	return message('hello,CodeIgniter-3.1.6up');
-	// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
-	return success('hello,CodeIgniter-3.1.6up');
-	// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
+return message('hello,CodeIgniter-3.1.6up');
+// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
+return success('hello,CodeIgniter-3.1.6up');
+// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
 ```	
 	请在接口控制器里面调用它，非常有用！
 
@@ -43,12 +43,12 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 	你可以在core文件夹中配置你的类名后缀：
 	Base_Router.php中：
 ```php
-    	public $controller_suffix = '_Controller';
+    public $controller_suffix = '_Controller';
 ```
 	Base_Loader.php中：
 ```php
-    	public $service_suffix = '_Service';
-    	public $model_suffix = '_Model';
+    public $service_suffix = '_Service';
+    public $model_suffix = '_Model';
 ```
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
