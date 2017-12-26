@@ -53,7 +53,7 @@ public $model_suffix = '_Model';
 
 	Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，请配置并在你的控制器里边继承它。
 
-	Ajax_Controller为ajax检测类，调用它可以判断是否为ajax请求，用于前后台数据交互接口。
+	Ajax_Controller为ajax检测类，继承它可以判断是否为ajax请求，用于前后台数据交互接口。
 
 
 #### 7.默认调试环境打开了程序分析：
