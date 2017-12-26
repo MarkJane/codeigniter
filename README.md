@@ -43,12 +43,12 @@ return success('hello,CodeIgniter-3.1.6up');
 	你可以在core文件夹中配置你的类名后缀：
 	Base_Router.php中：
 ```php
-    public $controller_suffix = '_Controller';
+public $controller_suffix = '_Controller';
 ```
 	Base_Loader.php中：
 ```php
-    public $service_suffix = '_Service';
-    public $model_suffix = '_Model';
+public $service_suffix = '_Service';
+public $model_suffix = '_Model';
 ```
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
@@ -64,7 +64,7 @@ return success('hello,CodeIgniter-3.1.6up');
 
 	你可以在core文件夹下找到Base_Controller类中改变或者注释掉
 ```php
-	ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
+ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
 ```
 ## 服务器要求
 
