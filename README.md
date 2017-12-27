@@ -57,7 +57,10 @@ public $model_suffix = '_Model';
 	Base_Controller为基类，只不过比CI_Controller多了一个程序分析。
 
 	Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，请配置并在你的控制器里边继承它。
-
+```php
+$this->smarty->assign('string',$string);
+$this->smarty->display('index.html');
+```
 	Ajax_Controller为ajax检测类，继承它可以判断是否为ajax请求，用于前后台数据交互接口。
 
 
