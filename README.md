@@ -37,7 +37,8 @@ return success('hello,CodeIgniter-3.1.6up',200);
 
 #### 3.新增file_url方法：
 
-	这个方法的作用是引入外部样式主题文件，跟site_url()、base_url()一样你需要引入$this->load->helper('url')，你也可以在config.php中统一配置域名。
+	这个方法的作用是引入外部样式主题文件，跟site_url()、base_url()一样你需要引入$this->load->helper('url');
+	你也可以在config.php中统一配置域名。
 
 
 #### 4.新增service层:
