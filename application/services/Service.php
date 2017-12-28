@@ -1,6 +1,6 @@
-<?php if (!defined('BASEPATH')) exit('No direct access allowed.');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Service_Service extends Base_Service
+class Service_Service extends CI_Service
 {
     public function __construct()
     {

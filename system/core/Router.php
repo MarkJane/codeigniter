@@ -449,6 +449,7 @@ class CI_Router {
 	 */
 	public function set_class($class)
 	{
+		$this->controller_suffix=$this->config->item('controller_suffix');
 		$this->class = str_replace(array('/', '.'), '', $class).$this->controller_suffix;
 	}
 	/**

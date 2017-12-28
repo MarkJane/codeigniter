@@ -136,12 +136,6 @@ class CI_Loader {
 		'unit_test' => 'unit',
 		'user_agent' => 'agent'
 		);
-	/**
-	 * service & model class suffix
-	 * @var string
-	 */
-	protected $service_suffix = '';
-    protected $model_suffix = '';
 
 	// --------------------------------------------------------------------
 
@@ -350,12 +344,12 @@ class CI_Loader {
 				}
 
 				require_once($mod_path.'models/'.$path.$model.'.php');
-				$model_class=$model.$this->model_suffix;
+				$model_class=$model.$CI->config->item('model_suffix');
+
 				if ( ! class_exists($model_class, FALSE))
 				{
 					throw new RuntimeException($mod_path."models/".$path.$model.".php exists, but doesn't declare class ".$model_class);
 				}
-
 				break;
 			}
 
@@ -516,11 +510,11 @@ class CI_Loader {
 	  * It is designed to be called from a user's app controllers.
 	  *
 	  * @param    string  the name of the class
-	  * @param    mixed   the optional parameters
-	  * @param    string  an optional object name
+	  * @param    string   an optional object name
+	  * @param    mixed  the optional parameters
 	  * @return   object
 	  */
-	public function service($service = '', $params = NULL, $object_name = NULL)
+	public function service($service = '', $name = NULL, $params = NULL)
 	{
 		if (empty($service))
 		{
@@ -531,7 +525,7 @@ class CI_Loader {
       	//Is the service is an array?If so,load every key
 			foreach ($service as $key => $value)
 			{
-				is_int($key) ? $this->service($value, '', $object_name) : $this->service($key, $value, $object_name);
+				is_int($key) ? $this->service($value, $name, '') : $this->service($key, $name, $value);
 			}
 			return $this;
 		}
@@ -546,21 +540,21 @@ class CI_Loader {
 			$service = substr($service, $last_slash);
 		}
 
-		if (empty($object_name))
+		if (empty($name))
 		{
-			$object_name = $service;
+			$name = $service;
 		}
 
-		$object_name = strtolower($object_name);
-		if (in_array($object_name, $this->_ci_services, TRUE))
+		$name = strtolower($name);
+		if (in_array($name, $this->_ci_services, TRUE))
 		{
 			return $this;
 		}
 
 		$CI =& get_instance();
-		if (isset($CI->$object_name))
+		if (isset($CI->$name))
 		{
-			throw new RuntimeException('The service name you are loading is the name of a resource that is already being used: '.$object_name);
+			throw new RuntimeException('The service name you are loading is the name of a resource that is already being used: '.$name);
 		}
 
       	// Note: All of the code under this condition used to be just:
@@ -611,21 +605,20 @@ class CI_Loader {
         		//default path application/services/
 				include_once($service_path.'services/'.$path.$service.'.php');
 				$CI = &get_instance();
-				$service_class=$service.$this->service_suffix;
-
-				if($params !== NULL)
-				{
-					$CI->$object_name = new $service_class($params);
-				}
-				else
-				{	
-					$CI->$object_name = new $service_class();
-				}
-				$this->_ci_services[] = $object_name;
+				$service_class=$service.$CI->config->item('service_suffix');
 				if (!class_exists($service_class, FALSE))
 				{
 					throw new RuntimeException($service_path."services/".$path.$service.".php exists, but doesn't declare class ".$service_class);
 				}
+				if($params !== NULL)
+				{
+					$CI->$name = new $service_class($params);
+				}
+				else
+				{	
+					$CI->$name = new $service_class();
+				}
+				$this->_ci_services[] = $name;
 				break;
 			}
 		}

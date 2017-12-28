@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct access allowed.');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Base_Controller extends CI_Controller {
 	
@@ -34,7 +34,7 @@ class Smarty_Controller extends Base_Controller {
 } 
 
 class Ajax_Controller extends Base_Controller {
-    
+
     public function __construct() {
         parent::__construct();
         if(!$this->input->is_ajax_request()){

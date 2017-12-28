@@ -16,38 +16,50 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 
 #### 1.全面支持composer。
+	默认引入了以下几个有用的扩展包：
+		"electrolinux/phpquery": "^0.9.6",	//php爬虫工具
+		"predis/predis": "^1.1",	//redis操作库
+		"smarty/smarty": "^3.1",	//smarty模板
+		"khanamiryan/qrcode-detector-decoder": "^1.0",	//二维码解析
+		"sfnt/wechat-php-sdk": "^1.1",	//微信三方开发SDK
+		"phpoffice/phpexcel": "^1.8",	//excel表格工具
+		"kairos/phpqrcode": "^1.0"	//二维码生成
+	请移步到 [https://packagist.org](https://packagist.org)了解详情。
 
 ####  2.新增全局message与success方法：
 ```php
-return message('hello,CodeIgniter-3.1.6up');
+return message('hello,CodeIgniter-3.1.6up',500);
 // {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
-return success('hello,CodeIgniter-3.1.6up');
+return success('hello,CodeIgniter-3.1.6up',200);
 // {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
 ```	
-	请在接口控制器里面调用它，非常有用！
+	两种方法返回标准的json字符串，请在接口控制器里面调用它，非常有用！
 
 #### 3.新增file_url方法：
 
-	这个方法的作用是引入外部样式主题文件，跟site_url()、base_url()一样使用，你也可以在config.php中统一配置域名。
+	这个方法的作用是引入外部样式主题文件，跟site_url()、base_url()一样你需要引入$this->load->helper('url')，你也可以在config.php中统一配置域名。
 
 
 #### 4.新增service层:
+	service($model[, $name = ''[, $params = NULL]]);
 ```php
 $this->load->service('service');
 $this->service->test();
 ```	
+	参数:
+		$model (mixed) -- 你要引入的service类名。
+		$name (string) -- service类别名。
+		$params (string) -- 该service的构造函数参数。
 	现在你可以把你的业务逻辑丢进services文件夹了，避免产生臃肿的控制器。
-
 
 #### 5.解决controller、service、model命名冲突:
 
-	你可以在core文件夹中配置你的类名后缀：
+	你可以在config文件中配置你的类名后缀：
 ```php
-//Base_Router.php
-public $controller_suffix = '_Controller';
-//Base_Loader.php
-public $service_suffix = '_Service';
-public $model_suffix = '_Model';
+//config.php
+$config['controller_suffix'] = '_Controller';
+$config['service_suffix'] = '_Service';
+$config['model_suffix'] = '_Model';
 ```
 	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
 
