@@ -24,7 +24,7 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 		"sfnt/wechat-php-sdk": "^1.1",	//微信三方开发SDK
 		"phpoffice/phpexcel": "^1.8",	//excel表格工具
 		"kairos/phpqrcode": "^1.0"	//二维码生成
-	请移步到 [https://packagist.org](https://packagist.org)了解详情。
+	请移步到 https://packagist.org了解详情。
 
 ####  2.新增全局message与success方法：
 ```php
