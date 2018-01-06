@@ -28,10 +28,10 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 ####  2.新增全局message与success方法：
 ```php
-return message('hello,CodeIgniter-3.1.6up',500);
-// {"msg":"hello,CodeIgniter-3.1.6up","code":500,"status":true}
+return message('hello,CodeIgniter-3.1.6up',422);
+// {"msg":"hello,CodeIgniter-3.1.6up","code":422,"error":true}
 return success('hello,CodeIgniter-3.1.6up',200);
-// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"status":false}
+// {"msg":"hello,CodeIgniter-3.1.6up","code":200,"error":false}
 ```	
 	两种方法返回标准的json字符串，请在接口控制器里面调用它，非常有用！
 
