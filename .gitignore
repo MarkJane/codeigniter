@@ -2,6 +2,7 @@
 
 !application/*/.htaccess
 !public/index.php
+writable/*
 
 # IDE Files
 #-------------------------
