@@ -94,3 +94,60 @@ class CI_Controller {
 	}
 
 }
+
+/**
+ * Application Smarty_Controller Class
+ *
+ * This class object is the super class that every library in
+ * Smarty_Controller will be assigned to.
+ *
+ * @package		Smarty_Controller
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		Bingoladen
+ * @link		https://github.com/bingoladen/CodeIgniter
+ */
+class Smarty_Controller extends CI_Controller {
+
+	protected $smarty;
+	public function __construct() {
+		parent::__construct();
+		$this->ci=parent::get_instance();
+		$this->ci->load->config('smarty');
+		$this->smarty = new \Smarty;
+		$this->smarty->left_delimiter = $this->ci->config->item('left_delimiter');
+		$this->smarty->right_delimiter = $this->ci->config->item('right_delimiter');
+		$this->smarty->setTemplateDir($this->ci->config->item('template_dir'));
+		$this->smarty->setCompileDir($this->ci->config->item('compile_dir'));
+		$this->smarty->setConfigDir($this->ci->config->item('config_dir'));
+		$this->smarty->setCacheDir($this->ci->config->item('cache_dir'));
+		$this->smarty->force_compile = $this->ci->config->item('force_compile');
+		$this->smarty->compile_check = $this->ci->config->item('compile_check');
+		$this->smarty->caching        = $this->ci->config->item('caching');
+		$this->smarty->cache_lifetime = $this->ci->config->item('cache_lifetime');
+	}
+
+} 
+
+/**
+ * Application Ajax_Controller Class
+ *
+ * This class object is the super class that every library in
+ * Ajax_Controller will be assigned to.
+ *
+ * @package		Ajax_Controller
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		Bingoladen
+ * @link		https://github.com/bingoladen/CodeIgniter
+ */
+class Ajax_Controller extends CI_Controller {
+
+	public function __construct() {
+		parent::__construct();
+		if(!$this->input->is_ajax_request()){
+			return message('Bad request!');
+		}
+	}
+
+} 

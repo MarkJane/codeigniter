@@ -62,27 +62,19 @@ $config['controller_suffix'] = '_Controller';
 $config['service_suffix'] = '_Service';
 $config['model_suffix'] = '_Model';
 ```
-	然后在各类名中加入以上后缀，注意文件命名须为去掉后缀的类名。
+	然后在各类中类名加入以上后缀，注意类的文件命名不含以上后缀。
 
 
 #### 6.新增了Smarty_Controller与Ajax_Controller两个控制器类：
 
-	Base_Controller为基类，只不过比CI_Controller多了一个程序分析。
-
-	Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，请配置并在你的控制器里边继承它。
+	Smarty_Controller为smarty模板使用基类，如果你的视图需要用到smarty，
+	请配置config目录下smarty.php并在你的控制器里边继承Smarty_Controller。
 ```php
 $this->smarty->assign('string',$string);
 $this->smarty->display('index.html');
 ```
 	Ajax_Controller为ajax检测类，继承它可以判断是否为ajax请求，用于前后台数据交互接口。
 
-
-#### 7.默认调试环境打开了程序分析：
-
-	你可以在core文件夹下找到Base_Controller类中改变或者注释掉
-```php
-ENVIRONMENT!=='development'?:$this->output->enable_profiler(TRUE);
-```
 ## 服务器要求
 
 PHP>=7.0

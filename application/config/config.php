@@ -29,12 +29,16 @@ $config['base_url'] =is_cli()?:(is_https() ? 'https' : 'http').'://'.$_SERVER["H
 |--------------------------------------------------------------------------
 | Base File URL
 |--------------------------------------------------------------------------
+| URL to your Style file path. Typically this will be your base URL.
+|--------------------------------------------------------------------------
 */
 $config['file_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
 | Controller Suffix
+|--------------------------------------------------------------------------
+| WARNING: The file name of this class does not contain this!
 |--------------------------------------------------------------------------
 */
 $config['controller_suffix'] = '_Controller';
@@ -43,12 +47,16 @@ $config['controller_suffix'] = '_Controller';
 |--------------------------------------------------------------------------
 | Service Suffix
 |--------------------------------------------------------------------------
+| WARNING: The file name of this class does not contain this!
+|--------------------------------------------------------------------------
 */
 $config['service_suffix'] = '_Service';
 
 /*
 |--------------------------------------------------------------------------
 | Model Suffix
+|--------------------------------------------------------------------------
+| WARNING: The file name of this class does not contain this!
 |--------------------------------------------------------------------------
 */
 $config['model_suffix'] = '_Model';
@@ -142,7 +150,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'Base_';
+$config['subclass_prefix'] = 'MY_';
 
 /*
 |--------------------------------------------------------------------------
@@ -164,7 +172,7 @@ $config['subclass_prefix'] = 'Base_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

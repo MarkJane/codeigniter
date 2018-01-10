@@ -36,7 +36,7 @@
  * @filesource
  */
 /**
- * SYSTEM PATH
+ * Path to the Initialization directory
  */
 define('PATH', dirname(dirname(__FILE__)).'/');
 
@@ -316,5 +316,4 @@ else
  *
  * And away we go...
  */
-require_once PATH.'vendor/autoload.php';
 require_once BASEPATH.'core/CodeIgniter.php';

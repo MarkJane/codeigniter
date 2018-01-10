@@ -1,7 +1,6 @@
 .DS_Store
 
 !application/*/.htaccess
-composer.lock
 public/*
 !public/index.php
 
