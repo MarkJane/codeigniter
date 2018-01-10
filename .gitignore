@@ -1,7 +1,6 @@
 .DS_Store
 
 !application/*/.htaccess
-public/*
 !public/index.php
 
 # IDE Files

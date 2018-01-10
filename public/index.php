@@ -35,10 +35,11 @@
  * @since	Version 1.0.0
  * @filesource
  */
-/**
+
+/*
  * Path to the Initialization directory
  */
-define('PATH', dirname(dirname(__FILE__)).'/');
+define('PATH', dirname(__DIR__).DIRECTORY_SEPARATOR);
 
 /*
  *---------------------------------------------------------------
@@ -238,6 +239,9 @@ define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
 	// Name of the "system" directory
 define('SYSDIR', basename(BASEPATH));
+
+	// Path to the system log directory
+define('WRITABLEPATH', PATH.'writable'.DIRECTORY_SEPARATOR);
 
 	// The path to the "application" directory
 if (is_dir($application_folder))

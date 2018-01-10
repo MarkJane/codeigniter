@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] =is_cli()?:(is_https() ? 'https' : 'http').'://'.$_SERVER["HTTP_HOST"];
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -270,7 +270,7 @@ $config['log_threshold'] = 1;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = FCPATH.'logs/';
+$config['log_path'] = WRITABLEPATH.'logs'.DIRECTORY_SEPARATOR;
 
 /*
 |--------------------------------------------------------------------------
@@ -318,7 +318,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 | application/views/errors/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['error_views_path'] = FCPATH.'errors/';
+$config['error_views_path'] = WRITABLEPATH.'errors'.DIRECTORY_SEPARATOR;
 
 /*
 |--------------------------------------------------------------------------
@@ -329,7 +329,7 @@ $config['error_views_path'] = FCPATH.'errors/';
 | application/cache/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = FCPATH.'cache/';
+$config['cache_path'] = WRITABLEPATH.'cache'.DIRECTORY_SEPARATOR;
 
 /*
 |--------------------------------------------------------------------------
@@ -416,13 +416,7 @@ $config['encryption_key'] = '@';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'session';
 $config['sess_expiration'] = 0;
-#文件驱动 files
-$config['sess_save_path'] =  FCPATH.'session/';
-#缓存驱动 redis
-#$config['sess_save_path'] = 'tcp://localhost:6379';
-#数据库驱动 database
-// $config['sess_save_path'] =  'authority';
-#
+$config['sess_save_path'] =  WRITABLEPATH.'session'.DIRECTORY_SEPARATOR;
 $config['sess_expire_on_close'] = TRUE;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 86400;

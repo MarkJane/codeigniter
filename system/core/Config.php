@@ -99,8 +99,9 @@ class CI_Config {
 					$server_addr = $_SERVER['SERVER_ADDR'];
 				}
 
-				$base_url = (is_https() ? 'https' : 'http').'://'.$server_addr
-				.substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
+				// $base_url = (is_https() ? 'https' : 'http').'://'.$server_addr
+				// .substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
+				$base_url = is_cli()?:(is_https() ? 'https' : 'http').'://'.$_SERVER["HTTP_HOST"];
 			}
 			else
 			{
@@ -305,7 +306,6 @@ class CI_Config {
 	public function base_url($uri = '', $protocol = NULL)
 	{
 		$base_url = $this->slash_item('base_url');
-
 		if (isset($protocol))
 		{
 			// For protocol-relative links
