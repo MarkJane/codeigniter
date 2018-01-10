@@ -241,7 +241,7 @@ define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 define('SYSDIR', basename(BASEPATH));
 
 	// Path to the system log directory
-define('WRITABLEPATH', PATH.'writable'.DIRECTORY_SEPARATOR);
+define('WRITABLEPATH', PATH.'_writable'.DIRECTORY_SEPARATOR);
 
 	// The path to the "application" directory
 if (is_dir($application_folder))
