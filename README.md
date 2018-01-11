@@ -7,6 +7,16 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 
 基于 [CodeIgniter3.1.6](https://codeigniter.com) 框架的一个优化版本。
 
+## 服务器要求
+
+PHP>=7.0
+
+## 安装
+
+克隆或下载项目并在application目录执行[composer update](https://packagist.org)
+
+请参阅 CodeIgniter用户指南的 [安装部分](https://codeigniter.com/user_guide/installation/index.html)
+
 ## 更新日志和新功能
 
 #### 0.源框架修改记录：
@@ -24,7 +34,7 @@ CodeIgniter是一个应用程序开发框架 - 一个工具包 - 用于使用PHP
 		"sfnt/wechat-php-sdk": "^1.1",	//微信三方开发SDK
 		"phpoffice/phpexcel": "^1.8",	//excel表格工具
 		"kairos/phpqrcode": "^1.0"	//二维码生成
-	请移步到 https://packagist.org了解详情。
+	请移步到 [https://packagist.org](https://packagist.org)了解详情。
 
 ####  2.新增全局message与success方法：
 ```php
@@ -74,14 +84,6 @@ $this->smarty->assign('string',$string);
 $this->smarty->display('index.html');
 ```
 	Ajax_Controller为ajax检测类，继承它可以判断是否为ajax请求，用于前后台数据交互接口。
-
-## 服务器要求
-
-PHP>=7.0
-
-## 安装
-
-请参阅 CodeIgniter用户指南的 [安装部分](https://codeigniter.com/user_guide/installation/index.html)
 
 ## 执照
 
