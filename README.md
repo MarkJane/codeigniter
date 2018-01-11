@@ -13,7 +13,7 @@ PHP>=7.0
 
 ## 安装
 
-克隆或下载项目并在application目录执行[composer update](https://packagist.org)
+克隆或下载项目并在application目录执行 [composer update](https://packagist.org) :blush:
 
 请参阅 CodeIgniter用户指南的 [安装部分](https://codeigniter.com/user_guide/installation/index.html)
 
@@ -34,7 +34,7 @@ PHP>=7.0
 		"sfnt/wechat-php-sdk": "^1.1",	//微信三方开发SDK
 		"phpoffice/phpexcel": "^1.8",	//excel表格工具
 		"kairos/phpqrcode": "^1.0"	//二维码生成
-	请移步到 [https://packagist.org](https://packagist.org)了解详情。
+	请移步到 https://packagist.org 了解详情。
 
 ####  2.新增全局message与success方法：
 ```php
