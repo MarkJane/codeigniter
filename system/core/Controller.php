@@ -77,7 +77,7 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
-		log_message('info', 'Controller Class Initialized');
+		log_message('info', 'CI_Controller Class Initialized');
 	}
 
 	// --------------------------------------------------------------------
@@ -112,19 +112,28 @@ class Smarty_Controller extends CI_Controller {
 	protected $smarty;
 	public function __construct() {
 		parent::__construct();
-		$this->ci=parent::get_instance();
-		$this->ci->load->config('smarty');
-		$this->smarty = new \Smarty;
-		$this->smarty->left_delimiter = $this->ci->config->item('left_delimiter');
-		$this->smarty->right_delimiter = $this->ci->config->item('right_delimiter');
-		$this->smarty->setTemplateDir($this->ci->config->item('template_dir'));
-		$this->smarty->setCompileDir($this->ci->config->item('compile_dir'));
-		$this->smarty->setConfigDir($this->ci->config->item('config_dir'));
-		$this->smarty->setCacheDir($this->ci->config->item('cache_dir'));
-		$this->smarty->force_compile = $this->ci->config->item('force_compile');
-		$this->smarty->compile_check = $this->ci->config->item('compile_check');
-		$this->smarty->caching        = $this->ci->config->item('caching');
-		$this->smarty->cache_lifetime = $this->ci->config->item('cache_lifetime');
+		log_message('info', 'Smarty_Controller Class Initialized');
+		if(!config_item('composer_autoload')){
+			die('$config[\'composer_autoload\'] is set to FALSE,please set it to TRUE.');
+		}else{
+			if(!class_exists('Smarty')){
+				die('Unable to load class: Smarty,please Execute \'composer require smarty/smarty\' in '.APPPATH);
+			}else{
+				$this->load->config('smarty');
+				$this->smarty = new Smarty;
+				$this->smarty->left_delimiter = config_item('left_delimiter');
+				$this->smarty->right_delimiter = config_item('right_delimiter');
+				$this->smarty->setTemplateDir(config_item('template_dir'));
+				$this->smarty->setCompileDir(config_item('compile_dir'));
+				$this->smarty->setConfigDir(config_item('config_dir'));
+				$this->smarty->setCacheDir(config_item('cache_dir'));
+				$this->smarty->force_compile = config_item('force_compile');
+				$this->smarty->compile_check = config_item('compile_check');
+				$this->smarty->caching        = config_item('caching');
+				$this->smarty->cache_lifetime = config_item('cache_lifetime');
+			}
+			
+		}
 	}
 
 } 
@@ -145,6 +154,7 @@ class Ajax_Controller extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		log_message('info', 'Ajax_Controller Class Initialized');
 		if(!$this->input->is_ajax_request()){
 			return message('Bad request!');
 		}
