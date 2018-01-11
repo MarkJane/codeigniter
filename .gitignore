@@ -1,6 +1,8 @@
 .DS_Store
 
 !application/*/.htaccess
+application/vendor/
+application/composer.lock
 !public/index.php
 _writable/*
 
