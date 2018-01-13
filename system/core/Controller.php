@@ -114,10 +114,10 @@ class Smarty_Controller extends CI_Controller {
 		parent::__construct();
 		log_message('info', 'Smarty_Controller Class Initialized');
 		if(!config_item('composer_autoload')){
-			die('$config[\'composer_autoload\'] is set to FALSE,please set it to TRUE.');
+			show_error('$config[\'composer_autoload\'] is set to FALSE,please set it to TRUE.');
 		}else{
 			if(!class_exists('Smarty')){
-				die('Unable to load class: Smarty,please Execute \'composer require smarty/smarty\' in '.APPPATH);
+				show_error('Unable to load class: Smarty,please Execute \'composer require smarty/smarty\' in '.APPPATH);
 			}else{
 				$this->load->config('smarty');
 				$this->smarty = new Smarty;
