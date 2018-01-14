@@ -6,6 +6,7 @@
         "khanamiryan/qrcode-detector-decoder": "^1.0",
         "sfnt/wechat-php-sdk": "^1.1",
         "phpoffice/phpexcel": "^1.8",
-        "kairos/phpqrcode": "^1.0"
+        "kairos/phpqrcode": "^1.0",
+        "firebase/php-jwt": "^5.0"
     }
 }

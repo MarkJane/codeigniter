@@ -31,9 +31,10 @@ PHP>=7.0
 		"predis/predis": "^1.1",	//redis操作库
 		"smarty/smarty": "^3.1",	//smarty模板
 		"khanamiryan/qrcode-detector-decoder": "^1.0",	//二维码解析
-		"sfnt/wechat-php-sdk": "^1.1",	//微信三方开发SDK
-		"phpoffice/phpexcel": "^1.8",	//excel表格工具
+		"sfnt/wechat-php-sdk": "^1.1",	//微信公众号开发SDK
+		"phpoffice/phpexcel": "^1.8",	//EXCEL表格工具
 		"kairos/phpqrcode": "^1.0"	//二维码生成
+		"firebase/php-jwt": "^5.0"	//接口安全交互套件JWT
 	请移步到 https://packagist.org 了解详情。
 
 ####  2.新增全局message与success方法：
